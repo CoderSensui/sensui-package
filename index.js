@@ -17,7 +17,23 @@ async function generateRandomBibleVerse() {
   }
 }
 
+async function fetchGptAiResponse(question) {
+  const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/ai?question=${encodeURIComponent(question)}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  return data.answer;
+}
+
+async function fetchBardAiResponse(question) {
+  const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/bard?question=${encodeURIComponent(question)}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  return data.message;
+}
+
 module.exports = {
   downloadTikTokVideo,
-  generateRandomBibleVerse
+  generateRandomBibleVerse,
+  fetchGptAiResponse,
+  fetchBardAiResponse
 };
