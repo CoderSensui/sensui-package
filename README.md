@@ -57,6 +57,44 @@ async function main() {
 main();
 </pre>
 
+<h3>Fetch GptAi Response</h3>
+
+<p>Import and use the package in your Node.js script to fetch a response from GptAi:</p>
+
+<pre>
+const { fetchGptAiResponse } = require('sensui-package');
+
+async function main() {
+  try {
+    const response = await fetchGptAiResponse('hi');
+    console.log('GptAi response:', response);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+main();
+</pre>
+
+<h3>Fetch BardAi Response</h3>
+
+<p>Import and use the package in your Node.js script to fetch a response from BardAi:</p>
+
+<pre>
+const { fetchBardAiResponse } = require('sensui-package');
+
+async function main() {
+  try {
+    const response = await fetchBardAiResponse('hi');
+    console.log('BardAi response:', response);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+main();
+</pre>
+
 <h2>License</h2>
 
 <p>This project is licensed under the <a href="LICENSE">MIT License</a>. See the <a href="LICENSE">LICENSE</a> file for details.</p>
