@@ -7,6 +7,17 @@ async function downloadTikTokVideo(url) {
   return jsonResult;
 }
 
+async function generateRandomBibleVerse() {
+  try {
+    const response = await fetch('https://sensui-useless-apis.codersensui.repl.co/api/tools/biblerandom');
+    const data = await response.json();
+    return data.verse;
+  } catch (error) {
+    throw new Error('Unable to fetch random Bible verse');
+  }
+}
+
 module.exports = {
-  downloadTikTokVideo
+  downloadTikTokVideo,
+  generateRandomBibleVerse
 };
