@@ -31,9 +31,31 @@ async function fetchBardAiResponse(question) {
   return data.message;
 }
 
+async function generateRandomInfo() {
+  const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/random-info';
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  return data;
+}
+
+async function askGptAi(question) {
+  const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/ai?question=${encodeURIComponent(question)}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  return data.answer;
+}
+
+async function askBardAi(question) {
+  const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/bard?question=${encodeURIComponent(question)}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  return data.message;
+}
+
 module.exports = {
   downloadTikTokVideo,
   generateRandomBibleVerse,
-  fetchGptAiResponse,
-  fetchBardAiResponse
+  generateRandomInfo,
+  askGptAi,
+  askBardAi
 };
