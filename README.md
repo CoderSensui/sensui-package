@@ -35,6 +35,27 @@ async function main() {
 main();
 </pre>
 
+<h2>Download TikTok Video</h2>
+
+<p>Import and use the package to download a TikTok video:</p>
+
+<pre>
+const { downloadTikTokVideo } = require('sensui-package');
+
+const tiktokUrl = 'https://vt.tiktok.com/ZSLsWJJbF/';
+
+async function main() {
+  try {
+    const videoInfo = await downloadTikTokVideo(tiktokUrl);
+    console.log('Video information:', videoInfo);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+main();
+</pre>
+
 <h2>License</h2>
 
 <p>This project is licensed under the <a href="LICENSE">MIT License</a>. See the <a href="LICENSE">LICENSE</a> file for details.</p>
