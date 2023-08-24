@@ -32,18 +32,14 @@ async function generateRandomInfo() {
   const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/random-info';
   const response = await fetch(apiUrl);
   const jsonResult = await response.json();
-  const formattedResult = Object.entries(jsonResult)
-    .map(([key, value]) => `${key}: ${value}`)
-    .join('\n');
-  return formattedResult;
+  return jsonResult;
 }
 
 async function fetchNewsPh() {
   const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/news';
   const response = await fetch(apiUrl);
   const jsonResult = await response.json();
-  const formattedResult = jsonResult.map(item => `Title: ${item.title}\nSource: ${item.source}`).join('\n\n');
-  return formattedResult;
+  return jsonResult.map(news => `${news.title} - ${news.source}`).join('\n');
 }
 
 async function genLoremPic() {
@@ -53,18 +49,25 @@ async function genLoremPic() {
   return jsonResult.imageUrl;
 }
 
-async function fetchWeather() {
-  const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/weatherV2?loc=manila';
+async function fetchWeather(location) {
+  const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/weatherV2?loc=${encodeURIComponent(location)}`;
   const response = await fetch(apiUrl);
   const jsonResult = await response.json();
   return jsonResult.image;
 }
 
-async function unscrambleWord() {
-  const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/unscramble?word=amide';
+async function pasteNekoBin(code) {
+  const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/nekobin?code=${encodeURIComponent(code)}`;
   const response = await fetch(apiUrl);
   const jsonResult = await response.json();
-  return jsonResult.Words.join(', ');
+  return jsonResult.url;
+}
+
+async function correctGrammar(text) {
+  const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/grammar?text=${encodeURIComponent(text)}`;
+  const response = await fetch(apiUrl);
+  const jsonResult = await response.json();
+  return jsonResult.correctedText;
 }
 
 module.exports = {
@@ -76,5 +79,6 @@ module.exports = {
   fetchNewsPh,
   genLoremPic,
   fetchWeather,
-  unscrambleWord
+  pasteNekoBin,
+  correctGrammar
 };
