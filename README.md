@@ -95,7 +95,7 @@ async function main() {
 main();
 </pre>
 
-<h3>Generate Random Information</h3>
+<h3>Generate Random Info</h3>
 
 <p>Import and use the package in your Node.js script to generate random information:</p>
 
@@ -105,7 +105,7 @@ const { generateRandomInfo } = require('sensui-package');
 async function main() {
   try {
     const info = await generateRandomInfo();
-    console.log('Random information:', info);
+    console.log('Random info:', info);
   } catch (error) {
     console.error('Error:', error.message);
   }
@@ -114,17 +114,17 @@ async function main() {
 main();
 </pre>
 
-<h3>Fetch Weather Information with A Image</h3>
+<h3>Fetch News PH</h3>
 
-<p>Import and use the package in your Node.js script to fetch a weather information with a image:</p>
+<p>Import and use the package in your Node.js script to fetch news headlines from the Philippines:</p>
 
 <pre>
-const { fetchWeather } = require('sensui-package');
+const { fetchNewsPh } = require('sensui-package');
 
 async function main() {
   try {
-    const imageUrl = await fetchWeather();
-    console.log('Weather info with image URL:', imageUrl);
+    const news = await fetchNewsPh();
+    console.log('News headlines:', news);
   } catch (error) {
     console.error('Error:', error.message);
   }
@@ -133,28 +133,9 @@ async function main() {
 main();
 </pre>
 
-<h3>Unscramble Word</h3>
+<h3>Generate Lorem Picsum</h3>
 
-<p>Import and use the package in your Node.js script to unscramble a word:</p>
-
-<pre>
-const { unscrambleWord } = require('sensui-package');
-
-async function main() {
-  try {
-    const unscrambledWords = await unscrambleWord();
-    console.log('Unscrambled words:', unscrambledWords);
-  } catch (error) {
-    console.error('Error:', error.message);
-  }
-}
-
-main();
-</pre>
-
-<h3>Generate Lorem Picsum Image</h3>
-
-<p>Import and use the package in your Node.js script to generate a random Lorem Picsum image:</p>
+<p>Import and use the package in your Node.js script to generate a Lorem Picsum image link:</p>
 
 <pre>
 const { genLoremPic } = require('sensui-package');
@@ -162,7 +143,7 @@ const { genLoremPic } = require('sensui-package');
 async function main() {
   try {
     const imageUrl = await genLoremPic();
-    console.log('Lorem Picsum image URL:', imageUrl);
+    console.log('Lorem Picsum image:', imageUrl);
   } catch (error) {
     console.error('Error:', error.message);
   }
@@ -171,17 +152,61 @@ async function main() {
 main();
 </pre>
 
-<h3>Fetch News</h3>
+<h3>Fetch Weather</h3>
 
-<p>Import and use the package in your Node.js script to fetch news articles:</p>
+<p>Import and use the package in your Node.js script to fetch weather information for a location:</p>
 
 <pre>
-const { fetchNewsPh } = require('sensui-package');
+const { fetchWeather } = require('sensui-package');
+
+const location = 'manila';
 
 async function main() {
   try {
-    const newsArticles = await fetchNewsPh();
-    console.log('News articles:', newsArticles);
+    const weatherImage = await fetchWeather(location);
+    console.log('Weather image:', weatherImage);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+main();
+</pre>
+
+<h3>Paste to Nekobin</h3>
+
+<p>Import and use the package in your Node.js script to paste text to Nekobin:</p>
+
+<pre>
+const { pasteNekoBin } = require('sensui-package');
+
+const code = 'input your text here';
+
+async function main() {
+  try {
+    const nekoBinUrl = await pasteNekoBin(code);
+    console.log('Nekobin URL:', nekoBinUrl);
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+}
+
+main();
+</pre>
+
+<h3>Correct Grammar</h3>
+
+<p>Import and use the package in your Node.js script to correct grammar in a text:</p>
+
+<pre>
+const { correctGrammar } = require('sensui-package');
+
+const text = 'your input here';
+
+async function main() {
+  try {
+    const correctedText = await correctGrammar(text);
+    console.log('Corrected text:', correctedText);
   } catch (error) {
     console.error('Error:', error.message);
   }
