@@ -8,54 +8,73 @@ async function downloadTikTokVideo(url) {
 }
 
 async function generateRandomBibleVerse() {
-  try {
-    const response = await fetch('https://sensui-useless-apis.codersensui.repl.co/api/tools/biblerandom');
-    const data = await response.json();
-    return data.verse;
-  } catch (error) {
-    throw new Error('Unable to fetch random Bible verse');
-  }
+  const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/biblerandom';
+  const response = await fetch(apiUrl);
+  const jsonResult = await response.json();
+  return jsonResult.verse;
 }
 
 async function fetchGptAiResponse(question) {
   const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/ai?question=${encodeURIComponent(question)}`;
   const response = await fetch(apiUrl);
-  const data = await response.json();
-  return data.answer;
+  const jsonResult = await response.json();
+  return jsonResult.answer;
 }
 
 async function fetchBardAiResponse(question) {
   const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/bard?question=${encodeURIComponent(question)}`;
   const response = await fetch(apiUrl);
-  const data = await response.json();
-  return data.message;
+  const jsonResult = await response.json();
+  return jsonResult.message;
 }
 
 async function generateRandomInfo() {
   const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/random-info';
   const response = await fetch(apiUrl);
-  const data = await response.json();
-  return data;
+  const jsonResult = await response.json();
+  const formattedResult = Object.entries(jsonResult)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join('\n');
+  return formattedResult;
 }
 
-async function askGptAi(question) {
-  const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/ai?question=${encodeURIComponent(question)}`;
+async function fetchNewsPh() {
+  const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/news';
   const response = await fetch(apiUrl);
-  const data = await response.json();
-  return data.answer;
+  const jsonResult = await response.json();
+  const formattedResult = jsonResult.map(item => `Title: ${item.title}\nSource: ${item.source}`).join('\n\n');
+  return formattedResult;
 }
 
-async function askBardAi(question) {
-  const apiUrl = `https://sensui-useless-apis.codersensui.repl.co/api/tools/bard?question=${encodeURIComponent(question)}`;
+async function genLoremPic() {
+  const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/lorem-picsumV2';
   const response = await fetch(apiUrl);
-  const data = await response.json();
-  return data.message;
+  const jsonResult = await response.json();
+  return jsonResult.imageUrl;
+}
+
+async function fetchWeather() {
+  const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/weatherV2?loc=manila';
+  const response = await fetch(apiUrl);
+  const jsonResult = await response.json();
+  return jsonResult.image;
+}
+
+async function unscrambleWord() {
+  const apiUrl = 'https://sensui-useless-apis.codersensui.repl.co/api/tools/unscramble?word=amide';
+  const response = await fetch(apiUrl);
+  const jsonResult = await response.json();
+  return jsonResult.Words.join(', ');
 }
 
 module.exports = {
   downloadTikTokVideo,
   generateRandomBibleVerse,
+  fetchGptAiResponse,
+  fetchBardAiResponse,
   generateRandomInfo,
-  askGptAi,
-  askBardAi
+  fetchNewsPh,
+  genLoremPic,
+  fetchWeather,
+  unscrambleWord
 };
